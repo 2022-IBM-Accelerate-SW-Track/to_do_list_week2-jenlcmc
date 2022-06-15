@@ -15,6 +15,7 @@
 
 .right {
   right: 0;
+  background-color: beige;
 }
 
 .centered {
@@ -39,4 +40,5 @@
 .profile_image {
   width: 500px;
   height: auto;
+  border-radius: 20%;
 }

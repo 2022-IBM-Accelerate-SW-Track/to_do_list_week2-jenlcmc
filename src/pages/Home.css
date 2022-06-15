@@ -2,3 +2,13 @@
   background-color: ghostwhite;
   height: 100vh;
 }
+
+hr{
+  border: 0;
+  border-top: 3px solid blue;
+  width:30%;
+  margin-top: 1.0em;
+  margin-bottom: 1.0em;
+  margin-left: auto;
+  margin-right: auto;
+}
