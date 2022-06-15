@@ -20,13 +20,31 @@ class Home extends Component {
     // This solution works for a small application but a more complex hashing function should be used when
     // dealing with a larger data sensitive project.
     todo.id = Math.random();
-    // Create a array that contains the current array and the new todo item
-    let new_list = [...this.state.todos, todo];
-    // Update the local state with the new array.
+
+    //this will check for if the todo already in the to do list or not
+    //if it alredy in the list, it will not add it again and return
+    //otherwise, add it into the array and update the state
+
+    if (this.state.todos.find((t) => t.content === todo.content)) {
+      return;
+    } else {
+      this.setState((prevState) => ({
+        todos: [...prevState.todos, todo],
+      }));
+    }
+  };
+
+  // the deleteTodo function is passed into the Todos component
+  //and is used to remove a todo from the list by using filter function.
+  deleteTodo = (id) => {
+    const todos = this.state.todos.filter((todo) => {
+      return todo.id !== id;
+    });
     this.setState({
-      todos: new_list,
+      todos: todos,
     });
   };
+
   render() {
     return (
       <div className="Home">
@@ -36,7 +54,8 @@ class Home extends Component {
         <AddTodo addTodo={this.addTodo} />
         {/* When returning the Todos component, todos is a prop passed to the todos.js file
          to format and render the current todo list state */}
-        <Todos todos={this.state.todos} />
+        <hr></hr>
+        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
       </div>
     );
   }
